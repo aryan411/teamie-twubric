@@ -58,7 +58,9 @@ export class TwubricComponent implements OnInit {
     }
   }
 
-  removeData() {}
+  removeData(id: number) {
+    this.objView = this.objView.filter((ob) => ob.uid !== id);
+  }
 }
 
 enum Sortby {

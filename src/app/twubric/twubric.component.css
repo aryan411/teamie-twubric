@@ -14,3 +14,7 @@
 .centertext {
   text-align: center;
 }
+
+.pointer {
+  cursor: pointer;
+}
