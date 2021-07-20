@@ -1,0 +1,16 @@
+.selectType {
+  background-color: blue;
+}
+
+#data {
+  padding: 0px !important;
+  width: 250px;
+}
+.border {
+  border: black;
+  border-width: 1px;
+  border-style: inset;
+}
+.centertext {
+  text-align: center;
+}

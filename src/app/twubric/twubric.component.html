@@ -1,0 +1,76 @@
+<section fxLayout="row" fxLayoutAlign="center center" style="margin: 20px">
+  <mat-card
+    [ngClass]="{ selectType: sortBy === sortByList.twubricScore }"
+    (click)="sortBy = sortByList.twubricScore; sortingList()"
+  >
+    Twubric Score
+  </mat-card>
+  <mat-card
+    [ngClass]="{ selectType: sortBy === sortByList.friends }"
+    (click)="sortBy = sortByList.friends; sortingList()"
+  >
+    Friends
+  </mat-card>
+  <mat-card
+    [ngClass]="{ selectType: sortBy === sortByList.influence }"
+    (click)="sortBy = sortByList.influence; sortingList()"
+  >
+    Influence
+  </mat-card>
+  <mat-card
+    [ngClass]="{ selectType: sortBy === sortByList.chirpiness }"
+    (click)="sortBy = sortByList.chirpiness; sortingList()"
+  >
+    Chirpiness
+  </mat-card>
+</section>
+<section fxLayout="row" fxLayoutAlign="center center">
+  <input
+    type="date"
+    #fromDate="ngModel"
+    [(ngModel)]="frDate"
+    [max]="toDate.value"
+    (ngModelChange)="filteDate()"
+  />
+  <input
+    type="date"
+    #toDate="ngModel"
+    [(ngModel)]="tDate"
+    [min]="fromDate.value"
+    (ngModelChange)="filteDate()"
+  />
+</section>
+<section
+  fxLayout="row wrap"
+  style="margin-left: 10vw; margin-right: 10vw"
+  fxLayoutAlign="center center"
+>
+  <div *ngFor="let item of objView">
+    <mat-card style="margin: 32px !important" id="data">
+      <div fxLayout="column">
+        <div fxLayoutAlign="space-between center" class="border" fxFlex>
+          <span>{{ item.fullname }}</span>
+          <span>{{ item?.twubric.total }} </span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div class="border centertext" fxFlex>
+            {{ item?.twubric.friends }} <br />
+            Friends
+          </div>
+          <div class="border centertext" fxFlex>
+            {{ item?.twubric.influence }} <br />
+            influence
+          </div>
+          <div class="border centertext" fxFlex>
+            {{ item?.twubric.chirpiness }} <br />
+            chirpiness
+          </div>
+        </div>
+        <div fxLayout="row" class="border" fxLayoutAlign="space-between center">
+          <div>{{ item?.join_date | date: "MMM dd, yyyy" }}</div>
+          <div>remove</div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</section>
