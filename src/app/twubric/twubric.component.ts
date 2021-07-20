@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import twurbicData from '../../assets/twurbicData.json';
 import moment from 'moment';
 
@@ -55,6 +55,26 @@ export class TwubricComponent implements OnInit {
               mFrDate
             ));
       });
+    }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  public keyEvent(event: any) {
+    if (event.code == 'KeyT') {
+      this.sortBy = this.sortByList.twubricScore;
+      this.sortingList();
+    }
+    if (event.code == 'KeyF') {
+      this.sortBy = this.sortByList.friends;
+      this.sortingList();
+    }
+    if (event.code == 'KeyI') {
+      this.sortBy = this.sortByList.influence;
+      this.sortingList();
+    }
+    if (event.code == 'KeyC') {
+      this.sortBy = this.sortByList.chirpiness;
+      this.sortingList();
     }
   }
 
